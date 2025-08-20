@@ -3,28 +3,25 @@ import Home from "./pages/Home";
 import DeveloperDashboard from "./pages/DeveloperDashboard";
 import RecruiterDashboard from "./pages/RecruiterDashboard";
 import AdminDashboard from "./pages/AdminDashboard";
-import { SignIn, SignedIn, SignedOut, RedirectToSignIn } from "@clerk/clerk-react";
+import { SignIn } from "@clerk/clerk-react";
 import { Routes, Route, Navigate } from "react-router-dom";
 
 function App() {
   return (
     <>
       <Routes>
-        <Route path="/select-role" element={<RoleSelector />} />
+        {/* Home is now landing page */}
+        <Route path="/" element={<Home />} />
 
         <Route path="/sign-in" element={<SignIn routing="path" path="/sign-in" />} />
+        <Route path="/select-role" element={<RoleSelector />} />
 
-        <Route path="/" element={
-          <>
-            <SignedIn><Home /></SignedIn>
-            <SignedOut><RedirectToSignIn /></SignedOut>
-          </>
-        }/>
-
+        {/* Dashboards */}
         <Route path="/developer" element={<DeveloperDashboard />} />
         <Route path="/recruiter" element={<RecruiterDashboard />} />
         <Route path="/admin" element={<AdminDashboard />} />
 
+        {/* Fallback */}
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </>

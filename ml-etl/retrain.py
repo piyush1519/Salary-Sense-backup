@@ -72,4 +72,9 @@ model_path = os.path.join(model_dir, "salary_predictor.pkl")
 with open(model_path, "wb") as f:
     pickle.dump(best_model, f)
 
-print(f" Model retrained with {best_name}. R²={best_score:.3f}, RMSE={best_rmse:.2f}")
+print(
+    f"\n Model retrained successfully with {best_name}\n"
+    f"   R^2 Score : {best_score:.3f}\n"
+    f"   RMSE     : {best_rmse:,.2f}\n"
+)
+
